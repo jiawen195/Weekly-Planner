@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TaskList from './TaskList';
+import Schedule from './Schedule'
+import { Box, Typography, Grid } from '@mui/material';
 
-function App() {
+
+
+
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (task) => {
+    setTasks([...tasks, task]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <Typography variant="h4" component="h1" color="text.primary" textAlign="center">
+        Weekly Planner
+      </Typography>
+      <Grid container spacing={2} justifyContent="space-between">
+        <Grid item xs={5}>
+          <TaskList></TaskList>
+        </Grid>
+        <Grid item xs={5}>
+          <Schedule></Schedule>
+        </Grid>
+    </Grid>
+    </Box>
   );
 }
 
