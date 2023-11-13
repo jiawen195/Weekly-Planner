@@ -1,29 +1,45 @@
 import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 
-const TaskList = () => {
-    const [tasks, setTasks] = useState([]);
-  
-    const handleAddTask = () => {
-      setTasks([...tasks, { name: '', duration: '' }]);
-    };
-  
-    const handleGenerate = () => {
-      // Pass 'tasks' to the Schedule component
-    };
-  
-    return (
-      <Paper>
-        {tasks.map((task, index) => (
-          <div key={index}>
-            <input type="text" placeholder="Task Name" />
-            <input type="text" placeholder="Task Duration" />
-          </div>
-        ))}
-        <button onClick={handleAddTask}>Add Task</button>
-        <button onClick={handleGenerate}>Generate</button>
-      </Paper>
-    );
+const TaskList = ({ onGenerate }) => {
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddTask = () => {
+    setTasks([...tasks, { name: '', duration: '' }]);
   };
 
-  export default TaskList;
+  const handleGenerate = () => {
+    onGenerate(tasks);
+  };
+
+  return (
+    <Paper>
+      {tasks.map((task, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            placeholder="Task Name"
+            onChange={(e) => {
+              const updatedTasks = [...tasks];
+              updatedTasks[index].name = e.target.value;
+              setTasks(updatedTasks);
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Task Duration"
+            onChange={(e) => {
+              const updatedTasks = [...tasks];
+              updatedTasks[index].duration = e.target.value;
+              setTasks(updatedTasks);
+            }}
+          />
+        </div>
+      ))}
+      <button onClick={handleAddTask}>Add Task</button>
+      <button onClick={handleGenerate}>Generate</button>
+    </Paper>
+  );
+};
+
+export default TaskList;

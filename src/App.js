@@ -9,9 +9,9 @@ import { Box, Typography, Grid } from '@mui/material';
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
-  const addTask = (task) => {
-    setTasks([...tasks, task]);
-  }
+  const handleGenerate = (taskList) => {
+    setTasks(taskList);
+  };
 
   return (
     <Box>
@@ -19,11 +19,11 @@ const App = () => {
         Weekly Planner
       </Typography>
       <Grid container spacing={2} justifyContent="space-between">
-        <Grid item xs={5}>
-          <TaskList></TaskList>
+        <Grid item xs={6}>
+          <TaskList onGenerate={handleGenerate}></TaskList>
         </Grid>
-        <Grid item xs={5}>
-          <Schedule></Schedule>
+        <Grid item xs={6}>
+          <Schedule tasks={tasks}></Schedule>
         </Grid>
     </Grid>
     </Box>
