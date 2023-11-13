@@ -10,6 +10,7 @@ const TaskList = ({ onGenerate }) => {
 
   const handleGenerate = () => {
     onGenerate(tasks);
+    setTasks([]);
   };
 
   return (
