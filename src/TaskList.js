@@ -5,7 +5,7 @@ const TaskList = ({ onGenerate }) => {
   const [tasks, setTasks] = useState([]);
 
   const handleAddTask = () => {
-    setTasks([...tasks, { name: '', duration: '' }]);
+    setTasks([...tasks, { name: '', duration: 0 }]);
   };
 
   const handleGenerate = () => {
@@ -31,7 +31,7 @@ const TaskList = ({ onGenerate }) => {
             placeholder="Task Duration"
             onChange={(e) => {
               const updatedTasks = [...tasks];
-              updatedTasks[index].duration = e.target.value;
+              updatedTasks[index].duration = parseInt(e.target.value, 10);
               setTasks(updatedTasks);
             }}
           />
@@ -42,5 +42,6 @@ const TaskList = ({ onGenerate }) => {
     </Paper>
   );
 };
+
 
 export default TaskList;
