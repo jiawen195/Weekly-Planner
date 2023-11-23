@@ -13,29 +13,31 @@ const Schedule = ({ tasks }) => {
   const totalHours = tasks.reduce((total, task) => total + task.duration, 0);
 
   useEffect(() => {
-    // This effect will run whenever tasks or weekdays change
-    const updatedWeekdays = { ...weekdays };
-
-    for (const weekday of Object.keys(updatedWeekdays)) {
-      updatedWeekdays[weekday].totalHours = 0;
-      updatedWeekdays[weekday].tasks = [];
-    }
-
-    const dailyHours = Math.max(totalHours / tasks.length, 10);
-
-    for (const task of tasks) {
+    setWeekdays((prevWeekdays) => {
+      const updatedWeekdays = { ...prevWeekdays };
+  
       for (const weekday of Object.keys(updatedWeekdays)) {
-        const data = updatedWeekdays[weekday];
-        if (task.duration + data.totalHours <= dailyHours) {
-          updatedWeekdays[weekday].totalHours += task.duration;
-          updatedWeekdays[weekday].tasks.push(task);
-          break;
+        updatedWeekdays[weekday].totalHours = 0;
+        updatedWeekdays[weekday].tasks = [];
+      }
+  
+      const dailyHours = Math.max(totalHours / tasks.length, 10);
+  
+      for (const task of tasks) {
+        for (const weekday of Object.keys(updatedWeekdays)) {
+          const data = updatedWeekdays[weekday];
+          if (task.duration + data.totalHours <= dailyHours) {
+            updatedWeekdays[weekday].totalHours += task.duration;
+            updatedWeekdays[weekday].tasks.push(task);
+            break;
+          }
         }
       }
-    }
-
-    setWeekdays(updatedWeekdays);
+  
+      return updatedWeekdays;
+    });
   }, [tasks, totalHours]);
+  
 
   const handleTaskCheck = (weekday, taskIndex, isChecked, duration) => {
     setWeekdays((prevWeekdays) => {
