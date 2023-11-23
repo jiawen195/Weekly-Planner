@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Checkbox } from '@mui/material';
 
 const Schedule = ({ tasks }) => {
-  
   const totalHours = tasks.reduce((total, task) => total + task.duration, 0);
   const dailyHours = Math.max(totalHours / tasks.length, 10);
   const weekdays = {
@@ -12,6 +11,14 @@ const Schedule = ({ tasks }) => {
     Thursday: { title: "Thursday", totalHours: 0, tasks: [] },
     Friday: { title: "Friday", totalHours: 0, tasks: [] },
   };
+
+  const handleTaskCheck = (weekday, isChecked, duration) => {
+    if (isChecked) {
+      duration = -duration;
+    }
+    weekdays[weekday].totalHours += duration;
+  }
+  
   
   const binToDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   for (const task of tasks) {
@@ -42,10 +49,15 @@ const Schedule = ({ tasks }) => {
               Total Hours Required: {weekdays[weekday].totalHours}
             </Typography>
             {weekdays[weekday].tasks.map((task, taskIndex) => (
-              <div key={taskIndex}>
-                <Typography variant="body1" component="p">
+              <div key={taskIndex} style={{ display: 'flex', alignItems: 'center' }}>
+                <Checkbox
+                  onChange={(event) => handleTaskCheck(weekday, taskIndex, event.target.checked, task.duration)
+                  }
+                />
+                <Typography variant="body1" component="p" style={{ marginLeft: '8px' }}>
                   {`Task ${taskIndex + 1}: ${task.name}, Duration: ${task.duration}`}
                 </Typography>
+
               </div>
             ))}
           </div>

@@ -9,8 +9,17 @@ const TaskList = ({ onGenerate }) => {
   };
 
   const handleGenerate = () => {
-    onGenerate(tasks);
-    setTasks([]);
+    // Check for tasks with duration > 10 hours
+    const invalidTasks = tasks.filter(task => task.duration > 10);
+
+    if (invalidTasks.length > 0) {
+      // Display an alert if there are tasks with duration > 10 hours
+      alert('Please split task into multiple so that each task has duration less than or equal to 10 hours');
+    } else {
+      // Call onGenerate only if all tasks have durations <= 10 hours
+      onGenerate(tasks);
+      setTasks([]);
+    }
   };
 
   return (
