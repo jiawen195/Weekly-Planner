@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Checkbox } from '@mui/material';
 
 const Schedule = ({ tasks }) => {
+  
   const [weekdays, setWeekdays] = useState({
     Monday: { title: "Monday", totalHours: 0, tasks: [] },
     Tuesday: { title: "Tuesday", totalHours: 0, tasks: [] },
