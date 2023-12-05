@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
+import './styles.css';
 
 const TaskList = ({ onGenerate }) => {
   const [tasks, setTasks] = useState([]);
@@ -23,11 +24,12 @@ const TaskList = ({ onGenerate }) => {
   };
 
   return (
-    <Paper>
+    <Paper className="TaskList">
       {tasks.map((task, index) => (
         <div key={index}>
           <input
             type="text"
+            className="input"
             placeholder="Task Name"
             onChange={(e) => {
               const updatedTasks = [...tasks];
@@ -37,6 +39,7 @@ const TaskList = ({ onGenerate }) => {
           />
           <input
             type="text"
+            className="input"
             placeholder="Task Duration"
             onChange={(e) => {
               const updatedTasks = [...tasks];
@@ -46,8 +49,8 @@ const TaskList = ({ onGenerate }) => {
           />
         </div>
       ))}
-      <button onClick={handleAddTask}>Add Task</button>
-      <button onClick={handleGenerate}>Generate</button>
+      <button className="button" onClick={handleAddTask}>Add Task</button>
+      <button className="button" onClick={handleGenerate}>Generate</button>
     </Paper>
   );
 };

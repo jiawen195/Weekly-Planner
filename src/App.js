@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TaskList from './TaskList';
 import Schedule from './Schedule'
+import './styles.css';
 import { Box, Typography, Grid } from '@mui/material';
 
 
@@ -14,8 +15,8 @@ const App = () => {
   };
 
   return (
-    <Box>
-      <Typography variant="h4" component="h1" color="text.primary" textAlign="center">
+    <Box className="App">
+      <Typography variant="h4" component="h1" color="text.primary" textAlign="center" className="header">
         Weekly Planner
       </Typography>
       <Grid container spacing={2} justifyContent="space-between">

@@ -1,0 +1,85 @@
+/* styles.css */
+
+/* App.js */
+.App {
+  text-align: center;
+  padding: 20px;
+  background-color: #c8e7bf; /* Light grey background */
+}
+
+/* TaskList.js */
+.TaskList {
+  padding: 20px;
+  background-color: #c5e2f0; /* Light blue background */
+}
+
+.TaskList input {
+  margin-bottom: 10px;
+}
+
+.TaskList button {
+  margin-top: 10px;
+}
+
+/* Schedule.js */
+.Schedule {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #c5e2f0; /* Light red background */
+}
+
+.Schedule h6 {
+  margin-bottom: 10px;
+}
+
+.Schedule Paper {
+  margin-top: 10px;
+}
+
+.Schedule Checkbox {
+  margin-right: 8px;
+}
+
+.header {
+  margin-bottom: 20px;
+  color: #3498db; /* Blue color */
+  text-transform: uppercase; /* Uppercase text */
+  font-size: 2.5em; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  letter-spacing: 2px; /* Increase letter spacing */
+  border-bottom: 2px solid #3498db; /* Blue underline */
+  padding-bottom: 10px; /* Space between text and underline */
+}
+
+.button {
+  background-color: #80a2e6; 
+  color: #fff; /* White text */
+  border: none; /* Remove button border */
+  padding: 10px 15px; /* Padding inside the button */
+  margin: 5px; /* Margin around the button */
+  font-size: 1em; /* Font size */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.button:hover {
+  background-color: #799cca; 
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.input:focus {
+  border-color: #3498db; /* Change border color on focus */
+  outline: none; /* Remove the default focus outline */
+}
+
+
+
+

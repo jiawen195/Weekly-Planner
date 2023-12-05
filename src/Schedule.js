@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Checkbox } from '@mui/material';
+import './styles.css';
 
 const Schedule = ({ tasks }) => {
   
@@ -55,25 +56,25 @@ const Schedule = ({ tasks }) => {
   };
 
   return (
-    <Box>
-      <Typography variant="h6" component="h1" color="text.primary" textAlign="center">
+    <Box className="Schedule">
+      <Typography variant="h6" component="h1" color="text.primary" textAlign="center" style={{ fontFamily: 'Arial, sans-serif', fontSize: '24px', fontWeight: 'bold', color: '#3498db' }}>
         Here is the schedule
       </Typography>
-      <Paper>
+      <Paper style={{ padding: '20px', marginTop: '20px', backgroundColor: '#f2f2f2' }}>
         {Object.keys(weekdays).map((weekday, index) => (
-          <div key={index}>
-            <Typography variant="h6" component="h2">
+          <div key={index} style={{ marginBottom: '20px', border: '1px solid #ddd', padding: '10px' }}>
+            <Typography variant="h6" component="h2" style={{ color: '#3498db' }}>
               {weekdays[weekday].title}
             </Typography>
-            <Typography variant="subtitle1" component="p">
+            <Typography variant="subtitle1" component="p" style={{ color: '#3498db' }}>
               Total Hours Required: {weekdays[weekday].totalHours}
             </Typography>
             {weekdays[weekday].tasks.map((task, taskIndex) => (
-              <div key={taskIndex} style={{ display: 'flex', alignItems: 'center' }}>
+              <div key={taskIndex} style={{ display: 'flex', alignItems: 'center', marginTop: '1px' }}>
                 <Checkbox
                   onChange={(event) => handleTaskCheck(weekday, taskIndex, event.target.checked, task.duration)}
                 />
-                <Typography variant="body1" component="p" style={{ marginLeft: '8px' }}>
+                <Typography variant="body1" component="p" style={{ marginLeft: '6px', color: '#555' }}>
                   {`Task ${taskIndex + 1}: ${task.name}, Duration: ${task.duration}`}
                 </Typography>
               </div>
